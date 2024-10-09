@@ -5,7 +5,7 @@ struct XiaoCheXiangQing {
     //根组件
     Column() {
 
-      Monitor()
+      MonitorBuilder()
 
     }
     .fullSize()
@@ -18,7 +18,7 @@ struct XiaoCheXiangQing {
 }
 
 @Builder
-function Monitor() {
+function MonitorBuilder() {
   Stack({ alignContent: Alignment.End }) {
     Column() {
       Image($rawfile('TestPicture.jpg'))
