@@ -68,6 +68,19 @@ function ShouYeBuilder(list: SheBeiList[]) {
   Column() {
     //顶部
     ShouYeDingBuBuilder()
+    Row({space:15}){
+      Text('设备')
+        .fontSize(25)
+        .fontColor(Color.White)
+      Text('空间')
+        .fontSize(25)
+        .fontColor(Color.White)
+      Text('自定义分组')
+        .fontSize(25)
+        .fontColor(Color.White)
+    }
+    .padding({left:15,bottom:5})
+    .width('100%')
     List({space:10}){
       ForEach(list,(item:SheBeiList,i)=>{
         SheBeiBuilder(item)
@@ -114,18 +127,24 @@ function ShouYeDingBuBuilder() {
 @Builder
 function SheBeiBuilder(sheBei:SheBeiList) {
   ListItem() {
-    Column(){
+    Column({space:5}){
       Text(sheBei.name)
         .fontColor(Color.White)
-        .fontSize(18)
+        .fontSize(20)
         .fontWeight(500)
+      Text(sheBei.state)
+        .fontColor(Color.White)
+        .fontSize(14)
+      Blank()
+      Image(sheBei.img)
+        .width(60)
     }
     .alignItems(HorizontalAlign.Start)
     .fullSize()
   }
   .padding(10)
   .borderRadius(10)
-  .height(100)
+  .height(130)
   .backgroundColor('#6fcccccc')
   .width('100%')
 }
