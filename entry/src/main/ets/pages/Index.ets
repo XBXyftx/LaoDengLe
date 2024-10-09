@@ -8,7 +8,9 @@ interface SheBeiList{
 @Component
 struct Index {
   @State currentTabIndex: number = 0
-
+  sheBeiList:SheBeiList[]=[
+    {name:'老登乐小车',state:'已连接',img:$rawfile('laoDengLeCar.svg')}
+  ]
   build() {
     //根组件
     Column() {
