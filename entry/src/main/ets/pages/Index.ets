@@ -64,8 +64,9 @@ struct Index {
 
 
 @Builder
-function ShouYeBuilder(List: SheBeiList[]) {
+function ShouYeBuilder(list: SheBeiList[]) {
   Column() {
+    //顶部
     Column() {
       Row() {
         Image($rawfile('add.svg'))
@@ -91,6 +92,20 @@ function ShouYeBuilder(List: SheBeiList[]) {
     .padding(5)
     // .backgroundColor(Color.White)
     .height('30%')
+    List({space:10}){
+      ForEach(list,(item:SheBeiList,i)=>{
+        ListItem(){
+
+        }
+        .height(80)
+        .backgroundColor(Color.Gray)
+        .width('100%')
+      })
+    }
+    .padding(10)
+    .lanes(2)
+    .layoutWeight(1)
+    .width('100%')
   }
   .fullSize()
 }
