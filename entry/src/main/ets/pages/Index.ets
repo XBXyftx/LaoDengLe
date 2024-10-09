@@ -1,16 +1,17 @@
-interface SheBeiList{
-  name:string
-  img:Resource
-  state:string
+interface SheBeiList {
+  name: string
+  img: Resource
+  state: string
 }
 
 @Entry
 @Component
 struct Index {
   @State currentTabIndex: number = 0
-  sheBeiList:SheBeiList[]=[
-    {name:'老登乐小车',state:'已连接',img:$rawfile('laoDengLeCar.svg')}
+  sheBeiList: SheBeiList[] = [
+    { name: '老登乐小车', state: '已连接', img: $rawfile('laoDengLeCar.svg') }
   ]
+
   build() {
     //根组件
     Column() {
@@ -20,7 +21,7 @@ struct Index {
 
         //首页
         TabContent() {
-          ShouYeBuilder()
+          ShouYeBuilder(this.sheBeiList)
         }
         .tabBar(this.tabBarBuilder($rawfile('Firstpage.svg'), '首页', 0))
 
@@ -31,15 +32,17 @@ struct Index {
         .tabBar(this.tabBarBuilder($rawfile('my.svg'), '我的', 1))
 
       }
-      .onChange((index:number)=>{this.currentTabIndex=index})
+      .onChange((index: number) => {
+        this.currentTabIndex = index
+      })
       .barPosition(BarPosition.End)
       .fullSize()
 
     }
     .fullSize()
     .linearGradient({
-      direction:GradientDirection.LeftBottom,
-      colors:[['#ff720491',0],['#ff9608b3',0.3],['#ff0902ba',1]]
+      direction: GradientDirection.LeftBottom,
+      colors: [['#ff720491', 0], ['#ff9608b3', 0.3], ['#ff0902ba', 1]]
     })
     .expandSafeArea()
   }
@@ -49,7 +52,7 @@ struct Index {
     Column({ space: 2 }) {
       Image(img)
         .height(32)
-        .fillColor(this.currentTabIndex==index?Color.White:Color.Black)
+        .fillColor(this.currentTabIndex == index ? Color.White : Color.Black)
       Text(text)
         .fontSize(16)
         .fontColor(Color.White)
@@ -61,17 +64,18 @@ struct Index {
 
 
 @Builder
-function ShouYeBuilder() {
+function ShouYeBuilder(List: SheBeiList[]) {
   Column() {
-    Column(){
-      Row(){
+    Column() {
+      Row() {
         Image($rawfile('add.svg'))
           .width(30)
       }
-      .padding({right:5})
+      .padding({ right: 5 })
       .justifyContent(FlexAlign.End)
       .width('100%')
-      Column({space:10}){
+
+      Column({ space: 10 }) {
         Text('一方.ets的家')
           .fontSize(30)
           .fontWeight(600)
@@ -79,7 +83,7 @@ function ShouYeBuilder() {
         Text('1个设备')
           .fontColor(Color.White)
       }
-      .padding({left:20})
+      .padding({ left: 20 })
       .alignItems(HorizontalAlign.Start)
       .width('100%')
     }
