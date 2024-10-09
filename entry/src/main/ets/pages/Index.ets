@@ -14,13 +14,13 @@ struct Index {
         TabContent() {
 
         }
-        .tabBar(tabBarBuilder($rawfile('Firstpage.svg'), '首页', 0))
+        .tabBar(this.tabBarBuilder($rawfile('Firstpage.svg'), '首页', 0))
 
         //我的
         TabContent() {
 
         }
-        .tabBar(tabBarBuilder($rawfile('my.svg'), '我的', 1))
+        .tabBar(this.tabBarBuilder($rawfile('my.svg'), '我的', 1))
 
       }
       .barPosition(BarPosition.End)
@@ -29,19 +29,20 @@ struct Index {
     }
     .fullSize()
   }
+
+  @Builder
+  tabBarBuilder(img: Resource, text: string, index: number) {
+    Column({ space: 2 }) {
+      Image(img)
+        .height(32)
+      Text(text)
+        .fontSize(16)
+    }
+    .width('100%')
+    .border({ width: { bottom: this.currentTabIndex == index ? 2 : 0 }, color: { bottom: Color.Blue } })
+  }
 }
 
-@Builder
-function tabBarBuilder(img: Resource, text: string, index: number) {
-  Column({ space: 2 }) {
-    Image(img)
-      .height(40)
-    Text(text)
-      .fontSize(16)
-      .margin({ bottom: 5 })
-  }
-  .border({ width: { bottom: 2 }, color: { bottom: Color.Blue } })
-}
 
 @Styles
 function fullSize() {
