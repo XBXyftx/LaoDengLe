@@ -5,7 +5,17 @@ struct XiaoCheXiangQing {
     Column() {
 
     }
-    .width('100%')
-    .height('100%')
+    .fullSize()
+    .linearGradient({
+      direction: GradientDirection.LeftBottom,
+      colors: [['#ff720491', 0], ['#ff9608b3', 0.3], ['#ff0902ba', 1]]
+    })
+    .expandSafeArea()
   }
+}
+
+@Styles
+function fullSize() {
+  .height('100%')
+  .width('100%')
 }
