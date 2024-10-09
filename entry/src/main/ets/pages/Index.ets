@@ -67,39 +67,10 @@ struct Index {
 function ShouYeBuilder(list: SheBeiList[]) {
   Column() {
     //顶部
-    Column() {
-      Row() {
-        Image($rawfile('add.svg'))
-          .width(30)
-      }
-      .padding({ right: 5 })
-      .justifyContent(FlexAlign.End)
-      .width('100%')
-
-      Column({ space: 10 }) {
-        Text('一方.ets的家')
-          .fontSize(30)
-          .fontWeight(600)
-          .fontColor(Color.White)
-        Text('1个设备')
-          .fontColor(Color.White)
-      }
-      .padding({ left: 20 })
-      .alignItems(HorizontalAlign.Start)
-      .width('100%')
-    }
-    .width('100%')
-    .padding(5)
-    // .backgroundColor(Color.White)
-    .height('30%')
+    ShouYeDingBuBuilder()
     List({space:10}){
       ForEach(list,(item:SheBeiList,i)=>{
-        ListItem(){
-
-        }
-        .height(80)
-        .backgroundColor(Color.Gray)
-        .width('100%')
+        SheBeiBuilder(item)
       })
     }
     .padding(10)
@@ -108,6 +79,55 @@ function ShouYeBuilder(list: SheBeiList[]) {
     .width('100%')
   }
   .fullSize()
+}
+
+@Builder
+function ShouYeDingBuBuilder() {
+  //顶部
+  Column({space:30}) {
+    Row() {
+      Image($rawfile('add.svg'))
+        .width(30);
+    }
+    .padding({ right: 5 })
+    .justifyContent(FlexAlign.End)
+    .width('100%');
+
+    Column({ space: 10 }) {
+      Text('一方.ets的家')
+        .fontSize(30)
+        .fontWeight(600)
+        .fontColor(Color.White);
+      Text('1个设备')
+        .fontColor(Color.White);
+    }
+    .padding({ left: 20 })
+    .alignItems(HorizontalAlign.Start)
+    .width('100%');
+  }
+  .width('100%')
+  .padding(5)
+  // .backgroundColor(Color.White)
+  .height('30%')
+}
+
+@Builder
+function SheBeiBuilder(sheBei:SheBeiList) {
+  ListItem() {
+    Column(){
+      Text(sheBei.name)
+        .fontColor(Color.White)
+        .fontSize(18)
+        .fontWeight(500)
+    }
+    .alignItems(HorizontalAlign.Start)
+    .fullSize()
+  }
+  .padding(10)
+  .borderRadius(10)
+  .height(100)
+  .backgroundColor('#6fcccccc')
+  .width('100%')
 }
 
 @Styles
