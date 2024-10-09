@@ -1,3 +1,5 @@
+import { router } from '@kit.ArkUI'
+
 interface SheBeiList {
   name: string
   img: Resource
@@ -141,6 +143,9 @@ function SheBeiBuilder(sheBei:SheBeiList) {
     }
     .alignItems(HorizontalAlign.Start)
     .fullSize()
+    .onClick(()=>{
+      router.pushUrl({url:"pages/XiaoCheXiangQing"})
+    })
   }
   .padding(10)
   .borderRadius(10)
