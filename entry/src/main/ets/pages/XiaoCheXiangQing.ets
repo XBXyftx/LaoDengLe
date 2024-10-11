@@ -20,8 +20,17 @@ struct XiaoCheXiangQing {
       MonitorBuilder()
 
       Row(){
+        ForEach(this.Buts,(item:Buts,i)=>{
+          Column(){
+            Image(item.img)
+              .width(30)
+            Text(item.text)
 
+          }
+        })
       }
+      .padding({left:15,right:15,top:5,bottom:5})
+      .justifyContent(FlexAlign.SpaceBetween)
       .backgroundColor(Color.White)
       .borderRadius(500)
       .width('90%')
