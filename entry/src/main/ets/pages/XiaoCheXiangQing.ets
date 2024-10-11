@@ -27,12 +27,13 @@ struct XiaoCheXiangQing {
             Text(item.text)
 
           }
+          .width(65)
         })
       }
-      .padding({left:15,right:15,top:5,bottom:5})
+      .padding({left:15,right:15,top:20,bottom:20})
       .justifyContent(FlexAlign.SpaceBetween)
       .backgroundColor(Color.White)
-      .borderRadius(500)
+      .borderRadius(10)
       .width('90%')
 
     }
