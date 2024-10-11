@@ -1,3 +1,5 @@
+import { router } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct XiaoCheXiangQing {
@@ -45,7 +47,19 @@ function MonitorBuilder() {
     }
     .height('100%')
     .margin({ right: 10 })
-    .padding({ top: 5, bottom: 5 });
+    .padding({ top: 5, bottom: 5 })
+
+    Row({space:10}){
+      Image($rawfile('arrow-left.svg'))
+        .SvgStyle()
+        .onClick(()=>{
+          router.back()
+        })
+      Text('老登乐小车监控界面')
+        .fontSize(16)
+        .fontColor(Color.White)
+    }
+    .position({x:4,y:4})
   }
   .expandSafeArea()
   .height('40%')
