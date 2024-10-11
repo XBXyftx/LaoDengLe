@@ -1,13 +1,30 @@
 import { router } from '@kit.ArkUI';
+interface Buts{
+  img:Resource
+  text:string
+}
 
 @Entry
 @Component
 struct XiaoCheXiangQing {
+  Buts:Buts[]=[
+    {img:$rawfile('cutScreen.svg'),text:'截图'},
+    {img:$rawfile('MaiKe.svg'),text:'对讲'},
+    {img:$rawfile('LuZhi.svg'),text:'录制'},
+    {img:$rawfile('DuoPingXieTong.svg'),text:'多路同屏'},
+  ]
   build() {
     //根组件
-    Column() {
+    Column({space:15}) {
 
       MonitorBuilder()
+
+      Row(){
+
+      }
+      .backgroundColor(Color.White)
+      .borderRadius(500)
+      .width('90%')
 
     }
     .fullSize()
