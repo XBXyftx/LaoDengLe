@@ -28,42 +28,34 @@ struct XiaoCheXiangQing {
 
       MonitorBuilder()
 
-      Row(){
-        ForEach(this.Buts,(item:Buts,i)=>{
-          Column(){
-            Image(item.img)
-              .width(30)
-              .fillColor(Color.Black)
-            Text(item.text)
+      this.ButtonsArea()
 
-          }
-          .width(65)
+      Stack(){
+        Row(){
+
+        }
+        .border({radius:100,color:Color.Gray,width:14})
+        .width(180)
+        .height(180)
+        Row(){
+
+        }
+        .linearGradient({
+          direction:GradientDirection.Bottom,
+          colors:[['#ffb1b1b1',0],['#fff8f7f7',0.5],['#ffb1b1b1',1],]
+        })
+        .border({radius:100,color:'#ffbababa',width:2})
+        .width(60)
+        .height(60)
+        .shadow({
+          color:Color.Black,
+          radius:50
         })
       }
-      .padding({left:15,right:15,top:20,bottom:20})
-      .justifyContent(FlexAlign.SpaceBetween)
       .backgroundColor(Color.White)
+      .width('90%')
+      .layoutWeight(1)
       .borderRadius(10)
-      .width('90%')
-
-      Row(){
-        ForEach(this.Urgency,(item:Urgency,i)=>{
-          Row({space:10}){
-            Text(item.text)
-              .fontSize(20)
-            Image(item.img)
-              .width(30)
-              .fillColor(Color.Red)
-          }
-          .border({width:3,color:Color.Red})
-          .borderRadius(10)
-          .padding(8)
-          .backgroundColor(Color.White)
-        })
-
-      }
-      .justifyContent(FlexAlign.SpaceBetween)
-      .width('90%')
 
     }
     .fullSize()
@@ -72,6 +64,51 @@ struct XiaoCheXiangQing {
       colors: [['#ff720491', 0], ['#ff9608b3', 0.3], ['#ff0902ba', 1]]
     })
     .expandSafeArea()
+  }
+
+  @Builder
+  ButtonsArea() {
+    Row() {
+      ForEach(this.Buts, (item: Buts, i) => {
+        Column() {
+          Image(item.img)
+            .width(30)
+            .fillColor(Color.Black);
+          Text(item.text);
+
+        }
+        .width(65);
+      });
+    }
+    .padding({
+      left: 15,
+      right: 15,
+      top: 20,
+      bottom: 20
+    })
+    .justifyContent(FlexAlign.SpaceBetween)
+    .backgroundColor(Color.White)
+    .borderRadius(10)
+    .width('90%')
+
+    Row() {
+      ForEach(this.Urgency, (item: Urgency, i) => {
+        Row({ space: 10 }) {
+          Text(item.text)
+            .fontSize(20);
+          Image(item.img)
+            .width(30)
+            .fillColor(Color.Red);
+        }
+        .border({ width: 3, color: Color.Red })
+        .borderRadius(10)
+        .padding(8)
+        .backgroundColor(Color.White);
+      });
+
+    }
+    .justifyContent(FlexAlign.SpaceBetween)
+    .width('90%')
   }
 }
 
