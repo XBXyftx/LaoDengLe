@@ -3,6 +3,10 @@ interface Buts{
   img:Resource
   text:string
 }
+interface Urgency {
+  text:string
+  img:Resource
+}
 
 @Entry
 @Component
@@ -12,6 +16,11 @@ struct XiaoCheXiangQing {
     {img:$rawfile('MaiKe.svg'),text:'对讲'},
     {img:$rawfile('LuZhi.svg'),text:'录制'},
     {img:$rawfile('DuoPingXieTong.svg'),text:'多路同屏'},
+  ]
+  Urgency:Urgency[]=[
+    {text:'报警',img:$rawfile('police.svg')},
+    {text:'急救',img:$rawfile('JiJiuTu.svg')},
+    {text:'消防',img:$rawfile('XiaoFang.svg')},
   ]
   build() {
     //根组件
@@ -24,6 +33,7 @@ struct XiaoCheXiangQing {
           Column(){
             Image(item.img)
               .width(30)
+              .fillColor(Color.Black)
             Text(item.text)
 
           }
@@ -34,6 +44,25 @@ struct XiaoCheXiangQing {
       .justifyContent(FlexAlign.SpaceBetween)
       .backgroundColor(Color.White)
       .borderRadius(10)
+      .width('90%')
+
+      Row(){
+        ForEach(this.Urgency,(item:Urgency,i)=>{
+          Row({space:10}){
+            Text(item.text)
+              .fontSize(20)
+            Image(item.img)
+              .width(30)
+              .fillColor(Color.Red)
+          }
+          .border({width:3,color:Color.Red})
+          .borderRadius(10)
+          .padding(8)
+          .backgroundColor(Color.White)
+        })
+
+      }
+      .justifyContent(FlexAlign.SpaceBetween)
       .width('90%')
 
     }
