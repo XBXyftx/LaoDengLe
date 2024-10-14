@@ -1,4 +1,5 @@
 import { router } from '@kit.ArkUI'
+import {DengLu} from '../module/DengLu'
 
 interface SheBeiList {
   name: string
@@ -13,10 +14,12 @@ struct Index {
   sheBeiList: SheBeiList[] = [
     { name: '老登乐小车', state: '已连接', img: $rawfile('laoDengLeCar.svg') }
   ]
+  @State time:number=0
 
   build() {
     //根组件
     Stack(){
+
       Column() {
 
         //index核心tabs组件
@@ -48,6 +51,9 @@ struct Index {
         colors: [['#ff720491', 0], ['#ff9608b3', 0.3], ['#ff0902ba', 1]]
       })
       .expandSafeArea()
+
+      DengLu()
+
 
     }
     .fullSize()

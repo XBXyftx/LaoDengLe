@@ -14,6 +14,11 @@ struct DengLu {
     .justifyContent(FlexAlign.End)
     .width('100%')
     .height('100%')
+    .linearGradient({
+      direction:GradientDirection.LeftBottom,
+      colors:[['#ffd9039c',0],['#ffffffff',1]]
+    })
+    .expandSafeArea()
   }
 }
 export {DengLu}
