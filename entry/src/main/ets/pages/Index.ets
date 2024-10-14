@@ -1,5 +1,5 @@
 import { router } from '@kit.ArkUI'
-import {DengLu} from '../module/DengLu'
+import { DengLu } from '../module/DengLu'
 
 interface SheBeiList {
   name: string
@@ -14,11 +14,11 @@ struct Index {
   sheBeiList: SheBeiList[] = [
     { name: '老登乐小车', state: '已连接', img: $rawfile('laoDengLeCar.svg') }
   ]
-  @State time:number=0
+  @State time: number = 5
 
   build() {
     //根组件
-    Stack(){
+    Stack() {
 
       Column() {
 
@@ -51,14 +51,25 @@ struct Index {
         colors: [['#ff720491', 0], ['#ff9608b3', 0.3], ['#ff0902ba', 1]]
       })
       .expandSafeArea()
+      .zIndex(1)
 
-      DengLu()
+      if (this.time != 0) {
+        DengLu()
+          .onAppear(() => {
+            setInterval(() => {
+              this.time--
+              if (this.time == 0) {
+                clearInterval()
+              }
+            }, 1000)
+          })
+          .zIndex(3)
+      }
 
 
     }
     .fullSize()
     .expandSafeArea()
-
 
   }
 
@@ -83,7 +94,7 @@ function ShouYeBuilder(list: SheBeiList[]) {
   Column() {
     //顶部
     ShouYeDingBuBuilder()
-    Row({space:15}){
+    Row({ space: 15 }) {
       Text('设备')
         .fontSize(25)
         .fontColor(Color.White)
@@ -94,10 +105,11 @@ function ShouYeBuilder(list: SheBeiList[]) {
         .fontSize(25)
         .fontColor(Color.White)
     }
-    .padding({left:15,bottom:5})
+    .padding({ left: 15, bottom: 5 })
     .width('100%')
-    List({space:10}){
-      ForEach(list,(item:SheBeiList,i)=>{
+
+    List({ space: 10 }) {
+      ForEach(list, (item: SheBeiList, i) => {
         SheBeiBuilder(item)
       })
     }
@@ -112,7 +124,7 @@ function ShouYeBuilder(list: SheBeiList[]) {
 @Builder
 function ShouYeDingBuBuilder() {
   //顶部
-  Column({space:30}) {
+  Column({ space: 30 }) {
     Row() {
       Image($rawfile('add.svg'))
         .width(30);
@@ -140,9 +152,9 @@ function ShouYeDingBuBuilder() {
 }
 
 @Builder
-function SheBeiBuilder(sheBei:SheBeiList) {
+function SheBeiBuilder(sheBei: SheBeiList) {
   ListItem() {
-    Column({space:5}){
+    Column({ space: 5 }) {
       Text(sheBei.name)
         .fontColor(Color.White)
         .fontSize(20)
@@ -156,8 +168,8 @@ function SheBeiBuilder(sheBei:SheBeiList) {
     }
     .alignItems(HorizontalAlign.Start)
     .fullSize()
-    .onClick(()=>{
-      router.pushUrl({url:"pages/XiaoCheXiangQing"})
+    .onClick(() => {
+      router.pushUrl({ url: "pages/XiaoCheXiangQing" })
     })
   }
   .padding(10)
