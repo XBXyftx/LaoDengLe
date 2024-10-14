@@ -14,8 +14,8 @@ struct Index {
   sheBeiList: SheBeiList[] = [
     { name: '老登乐小车', state: '已连接', img: $rawfile('laoDengLeCar.svg') }
   ]
-  @State time: number = 5
-  @State Id:number = 0
+  @State time: number = 1
+  @State Id: number = 0
 
   build() {
     //根组件
@@ -58,16 +58,17 @@ struct Index {
         DengLu()
           .onAppear(() => {
             console.log('开屏加载页加载成功，开始倒计时')
-            this.Id=setInterval(() => {
+            this.Id = setInterval(() => {
               this.time--
               if (this.time == 0) {
                 clearInterval(this.Id)
               }
             }, 1000)
           })
-          .onDisAppear(()=>{
+          .onDisAppear(() => {
             console.log('开屏加载结束')
           })
+          .transition(TransitionEffect.OPACITY.animation({curve:Curve.Ease}))
       }
 
 
@@ -96,6 +97,7 @@ struct Index {
 @Builder
 function MyPage_Builder() {
   Column() {
+
   }
   .fullSize()
 }
