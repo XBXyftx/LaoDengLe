@@ -14,7 +14,7 @@ struct Index {
   sheBeiList: SheBeiList[] = [
     { name: '老登乐小车', state: '已连接', img: $rawfile('laoDengLeCar.svg') }
   ]
-  @State time: number = 1
+  @State time: number = 5
   @State Id: number = 0
 
   build() {
