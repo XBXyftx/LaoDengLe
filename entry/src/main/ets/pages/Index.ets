@@ -53,16 +53,20 @@ struct Index {
       })
       .expandSafeArea()
 
-
+      //开屏加载
       if (this.time != 0) {
         DengLu()
           .onAppear(() => {
+            console.log('开屏加载页加载成功，开始倒计时')
             this.Id=setInterval(() => {
               this.time--
               if (this.time == 0) {
                 clearInterval(this.Id)
               }
             }, 1000)
+          })
+          .onDisAppear(()=>{
+            console.log('开屏加载结束')
           })
       }
 

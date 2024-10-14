@@ -58,6 +58,9 @@ struct XiaoCheXiangQing {
       .borderRadius(10)
 
     }
+    .onAppear(()=>{
+      console.log('跳转详情页成功')
+    })
     .fullSize()
     .linearGradient({
       direction: GradientDirection.LeftBottom,
@@ -147,6 +150,7 @@ function MonitorBuilder() {
         .SvgStyle()
         .onClick(()=>{
           router.back()
+          console.log('返回按钮点击事件生效')
         })
       Text('老登乐小车监控界面')
         .fontSize(16)
