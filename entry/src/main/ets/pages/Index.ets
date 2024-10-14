@@ -16,37 +16,43 @@ struct Index {
 
   build() {
     //根组件
-    Column() {
+    Stack(){
+      Column() {
 
-      //index核心tabs组件
-      Tabs() {
+        //index核心tabs组件
+        Tabs() {
 
-        //首页
-        TabContent() {
-          ShouYeBuilder(this.sheBeiList)
+          //首页
+          TabContent() {
+            ShouYeBuilder(this.sheBeiList)
+          }
+          .tabBar(this.tabBarBuilder($rawfile('Firstpage.svg'), '首页', 0))
+
+          //我的
+          TabContent() {
+
+          }
+          .tabBar(this.tabBarBuilder($rawfile('my.svg'), '我的', 1))
+
         }
-        .tabBar(this.tabBarBuilder($rawfile('Firstpage.svg'), '首页', 0))
-
-        //我的
-        TabContent() {
-
-        }
-        .tabBar(this.tabBarBuilder($rawfile('my.svg'), '我的', 1))
+        .onChange((index: number) => {
+          this.currentTabIndex = index
+        })
+        .barPosition(BarPosition.End)
+        .fullSize()
 
       }
-      .onChange((index: number) => {
-        this.currentTabIndex = index
-      })
-      .barPosition(BarPosition.End)
       .fullSize()
+      .linearGradient({
+        direction: GradientDirection.LeftBottom,
+        colors: [['#ff720491', 0], ['#ff9608b3', 0.3], ['#ff0902ba', 1]]
+      })
 
     }
     .fullSize()
-    .linearGradient({
-      direction: GradientDirection.LeftBottom,
-      colors: [['#ff720491', 0], ['#ff9608b3', 0.3], ['#ff0902ba', 1]]
-    })
     .expandSafeArea()
+
+
   }
 
   @Builder
