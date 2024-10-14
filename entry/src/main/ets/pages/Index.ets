@@ -15,6 +15,7 @@ struct Index {
     { name: '老登乐小车', state: '已连接', img: $rawfile('laoDengLeCar.svg') }
   ]
   @State time: number = 5
+  @State Id:number = 0
 
   build() {
     //根组件
@@ -51,19 +52,18 @@ struct Index {
         colors: [['#ff720491', 0], ['#ff9608b3', 0.3], ['#ff0902ba', 1]]
       })
       .expandSafeArea()
-      .zIndex(1)
+
 
       if (this.time != 0) {
         DengLu()
           .onAppear(() => {
-            setInterval(() => {
+            this.Id=setInterval(() => {
               this.time--
               if (this.time == 0) {
-                clearInterval()
+                clearInterval(this.Id)
               }
             }, 1000)
           })
-          .zIndex(3)
       }
 
 
