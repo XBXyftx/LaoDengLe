@@ -28,13 +28,13 @@ struct Index {
 
           //首页
           TabContent() {
-            ShouYeBuilder(this.sheBeiList)
+            ShouYe_Builder(this.sheBeiList)
           }
           .tabBar(this.tabBarBuilder($rawfile('Firstpage.svg'), '首页', 0))
 
           //我的
           TabContent() {
-
+            MyPage_Builder()
           }
           .tabBar(this.tabBarBuilder($rawfile('my.svg'), '我的', 1))
 
@@ -94,39 +94,51 @@ struct Index {
 
 
 @Builder
-function ShouYeBuilder(list: SheBeiList[]) {
+function MyPage_Builder() {
   Column() {
-    //顶部
-    ShouYeDingBuBuilder()
-    Row({ space: 15 }) {
-      Text('设备')
-        .fontSize(25)
-        .fontColor(Color.White)
-      Text('空间')
-        .fontSize(25)
-        .fontColor(Color.White)
-      Text('自定义分组')
-        .fontSize(25)
-        .fontColor(Color.White)
-    }
-    .padding({ left: 15, bottom: 5 })
-    .width('100%')
-
-    List({ space: 10 }) {
-      ForEach(list, (item: SheBeiList, i) => {
-        SheBeiBuilder(item)
-      })
-    }
-    .padding(10)
-    .lanes(2)
-    .layoutWeight(1)
-    .width('100%')
   }
   .fullSize()
 }
 
 @Builder
-function ShouYeDingBuBuilder() {
+function ShouYe_Builder(list: SheBeiList[]) {
+  Column() {
+    //顶部
+    ShouYe_DingBu_Builder()
+    ShouYe_XiaBu_Builder(list)
+  }
+  .fullSize()
+}
+
+@Builder
+function ShouYe_XiaBu_Builder(list: SheBeiList[]) {
+  Row({ space: 15 }) {
+    Text('设备')
+      .fontSize(25)
+      .fontColor(Color.White);
+    Text('空间')
+      .fontSize(25)
+      .fontColor(Color.White);
+    Text('自定义分组')
+      .fontSize(25)
+      .fontColor(Color.White);
+  }
+  .padding({ left: 15, bottom: 5 })
+  .width('100%')
+
+  List({ space: 10 }) {
+    ForEach(list, (item: SheBeiList, i) => {
+      ShouYe_SheBei_Builder(item);
+    });
+  }
+  .padding(10)
+  .lanes(2)
+  .layoutWeight(1)
+  .width('100%')
+}
+
+@Builder
+function ShouYe_DingBu_Builder() {
   //顶部
   Column({ space: 30 }) {
     Row() {
@@ -156,7 +168,7 @@ function ShouYeDingBuBuilder() {
 }
 
 @Builder
-function SheBeiBuilder(sheBei: SheBeiList) {
+function ShouYe_SheBei_Builder(sheBei: SheBeiList) {
   ListItem() {
     Column({ space: 5 }) {
       Text(sheBei.name)
