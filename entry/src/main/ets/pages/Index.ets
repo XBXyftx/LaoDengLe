@@ -14,7 +14,7 @@ struct Index {
   sheBeiList: SheBeiList[] = [
     { name: '老登乐小车', state: '已连接', img: $rawfile('laoDengLeCar.svg') }
   ]
-  @State time: number = 5
+  @State time: number = 1
   @State Id: number = 0
 
   build() {
@@ -96,9 +96,47 @@ struct Index {
 
 @Builder
 function MyPage_Builder() {
-  Column() {
+  Column({space:10}) {
+    Row(){
+      Text('我的')
+        .fontSize(25)
+        .fontColor(Color.White)
+      Image($rawfile('message.svg'))
+        .height(30)
+        .fillColor(Color.White)
+    }
+    .padding({left:1,right:1})
+    .justifyContent(FlexAlign.SpaceBetween)
+    .width('100%')
+
+    List({space:10}){
+      //顶部用户头像和昵称卡片
+      ListItem(){
+        Row({space:15}){
+          Image($rawfile('head.jpg'))
+            .borderRadius(1000)
+            .height(50)
+          Text('一方通行')
+            .fontColor(Color.White)
+            .fontSize(20)
+        }
+        .width('100%')
+      }
+      .padding(20)
+      .borderRadius(15)
+      .backgroundColor('#c6585858')
+      .width('100%')
+
+      //
+      ListItem(){
+
+      }
+    }
+    .width('100%')
+    .layoutWeight(1)
 
   }
+  .padding(10)
   .fullSize()
 }
 
