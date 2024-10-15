@@ -19,7 +19,7 @@ struct Index {
   sheBeiList: SheBeiList[] = [
     { name: '老登乐小车', state: '已连接', img: $rawfile('laoDengLeCar.svg') }
   ]
-  @State time: number = 1
+  @State time: number = 5
   @State Id: number = 0
 
   build() {
@@ -115,6 +115,12 @@ struct MyPage_Builder {
     { img: $rawfile('ShiYan.svg'), str: '新品实验室' },
     { img: $rawfile('SheBeiXieTong.svg'), str: '多设备协同' },
   ]
+  MyPage_Serves3: MyPage_Serves[] = [
+    {img:$rawfile('Setting.svg'),str:'设置'},
+    {img:$rawfile('ZhangHuSafe.svg'),str:'账户安全'},
+    {img:$rawfile('YinSi.svg'),str:'隐私管理'},
+    {img:$rawfile('Help.svg'),str:'帮助与反馈'},
+  ]
 
   build() {
     Column({ space: 10 }) {
@@ -190,6 +196,35 @@ struct MyPage_Builder {
                   .strokeWidth(1.5)
               }
 
+            })
+          }
+          .borderRadius(15)
+          .backgroundColor('#c6585858')
+          .padding(15)
+          .width('100%')
+        }
+
+        //设置区
+        ListItem(){
+          Column({ space: 20 }){
+            ForEach(this.MyPage_Serves3,(item:MyPage_Serves,i)=>{
+              Row({ space: 20 }) {
+                Image(item.img)
+                  .width(25)
+                  .fillColor('#ffe1dede')
+                Text(item.str)
+                  .fontSize(20)
+                  .fontColor(Color.White)
+              }
+              .margin({ top: i == 0 ? 5 : 0, bottom: i == this.MyPage_Serves3.length - 1 ? 5 : 0 })
+              .width('100%')
+
+              if (i != this.MyPage_Serves3.length - 1) {
+                Divider()
+                  .width('100%')
+                  .color('#ffc2c2c2')
+                  .strokeWidth(1.5)
+              }
             })
           }
           .borderRadius(15)
