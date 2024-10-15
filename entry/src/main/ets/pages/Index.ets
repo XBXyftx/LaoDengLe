@@ -7,6 +7,11 @@ interface SheBeiList {
   state: string
 }
 
+interface MyPage_Serves {
+  img: Resource
+  str: string
+}
+
 @Entry
 @Component
 struct Index {
@@ -68,7 +73,7 @@ struct Index {
           .onDisAppear(() => {
             console.log('开屏加载结束')
           })
-          .transition(TransitionEffect.OPACITY.animation({curve:Curve.Ease}))
+          .transition(TransitionEffect.OPACITY.animation({ curve: Curve.Ease }))
       }
 
 
@@ -94,50 +99,75 @@ struct Index {
 }
 
 
-@Builder
-function MyPage_Builder() {
-  Column({space:10}) {
-    Row(){
-      Text('我的')
-        .fontSize(25)
-        .fontColor(Color.White)
-      Image($rawfile('message.svg'))
-        .height(30)
-        .fillColor(Color.White)
-    }
-    .padding({left:1,right:1})
-    .justifyContent(FlexAlign.SpaceBetween)
-    .width('100%')
+@Component
+struct MyPage_Builder {
+  MyPage_Serves: MyPage_Serves[] = [
+    { img: $rawfile('ShuoMingShu.svg'), str: '产品百科' },
+    { img: $rawfile('SheQuFuWu.svg'), str: '社区服务' },
+    { img: $rawfile('HuLi.svg'), str: '医疗护理' },
+    { img: $rawfile('DingZhi.svg'), str: '特殊定制' },
+  ]
+  MyPage_Serves2: MyPage_Serves[] = []
 
-    List({space:10}){
-      //顶部用户头像和昵称卡片
-      ListItem(){
-        Row({space:15}){
-          Image($rawfile('head.jpg'))
-            .borderRadius(1000)
-            .height(50)
-          Text('一方通行')
-            .fontColor(Color.White)
-            .fontSize(20)
-        }
-        .width('100%')
+  build() {
+    Column({ space: 10 }) {
+      Row() {
+        Text('我的')
+          .fontSize(25)
+          .fontColor(Color.White)
+        Image($rawfile('message.svg'))
+          .height(30)
+          .fillColor(Color.White)
       }
-      .padding(20)
-      .borderRadius(15)
-      .backgroundColor('#c6585858')
+      .padding({ left: 1, right: 1 })
+      .justifyContent(FlexAlign.SpaceBetween)
       .width('100%')
 
-      //
-      ListItem(){
+      List({ space: 10 }) {
+        //顶部用户头像和昵称卡片
+        ListItem() {
+          Row({ space: 15 }) {
+            Image($rawfile('head.jpg'))
+              .borderRadius(1000)
+              .height(60)
+            Text('一方通行')
+              .fontColor(Color.White)
+              .fontSize(20)
+          }
+          .width('100%')
+        }
+        .padding(20)
+        .borderRadius(15)
+        .backgroundColor('#c6585858')
+        .width('100%')
 
+        //我的页四项快捷服务
+        ListItem() {
+          Row() {
+            ForEach(this.MyPage_Serves, (item: MyPage_Serves, i) => {
+              Column({ space: 15 }) {
+                Image(item.img)
+                  .width(30)
+                Text(item.str)
+                  .fontSize(16)
+                  .fontColor(Color.White)
+              }
+            })
+          }
+          .borderRadius(15)
+          .justifyContent(FlexAlign.SpaceBetween)
+          .backgroundColor('#c6585858')
+          .padding(15)
+          .width('100%')
+        }
       }
-    }
-    .width('100%')
-    .layoutWeight(1)
+      .width('100%')
+      .layoutWeight(1)
 
+    }
+    .padding(10)
+    .fullSize()
   }
-  .padding(10)
-  .fullSize()
 }
 
 @Builder
