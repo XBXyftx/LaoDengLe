@@ -107,7 +107,14 @@ struct MyPage_Builder {
     { img: $rawfile('HuLi.svg'), str: '医疗护理' },
     { img: $rawfile('DingZhi.svg'), str: '特殊定制' },
   ]
-  MyPage_Serves2: MyPage_Serves[] = []
+  MyPage_Serves2: MyPage_Serves[] = [
+    {img:$rawfile('ErWeiMa.svg'),str:'扫码添加设备'},
+    {img:$rawfile('ShangCheng.svg'),str:'商城'},
+    {img:$rawfile('WeiXinXiaoXi.svg'),str:'微信消息推送'},
+    {img:$rawfile('ErWeiMa.svg'),str:'论坛'},
+    {img:$rawfile('ErWeiMa.svg'),str:'新品实验室'},
+    {img:$rawfile('ErWeiMa.svg'),str:'多设备协同'},
+  ]
 
   build() {
     Column({ space: 10 }) {
