@@ -31,6 +31,10 @@ struct XiaoCheXiangQing {
       this.ButtonsArea()
 
       Stack(){
+        Text('若摄像头未拍摄到目标可手动对准')
+          .position({y:220})
+          .width('100%')
+          .textAlign(TextAlign.Center)
         Row(){
 
         }
