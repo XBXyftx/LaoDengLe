@@ -108,12 +108,12 @@ struct MyPage_Builder {
     { img: $rawfile('DingZhi.svg'), str: '特殊定制' },
   ]
   MyPage_Serves2: MyPage_Serves[] = [
-    {img:$rawfile('ErWeiMa.svg'),str:'扫码添加设备'},
-    {img:$rawfile('ShangCheng.svg'),str:'商城'},
-    {img:$rawfile('WeiXinXiaoXi.svg'),str:'微信消息推送'},
-    {img:$rawfile('ErWeiMa.svg'),str:'论坛'},
-    {img:$rawfile('ErWeiMa.svg'),str:'新品实验室'},
-    {img:$rawfile('ErWeiMa.svg'),str:'多设备协同'},
+    { img: $rawfile('ErWeiMa.svg'), str: '扫码添加设备' },
+    { img: $rawfile('ShangCheng.svg'), str: '商城' },
+    { img: $rawfile('WeiXinXiaoXi.svg'), str: '微信消息推送' },
+    { img: $rawfile('LunTan.svg'), str: '论坛' },
+    { img: $rawfile('ShiYan.svg'), str: '新品实验室' },
+    { img: $rawfile('SheBeiXieTong.svg'), str: '多设备协同' },
   ]
 
   build() {
@@ -167,7 +167,39 @@ struct MyPage_Builder {
           .padding(15)
           .width('100%')
         }
+
+        //详细功能区
+        ListItem() {
+          Column({ space: 20 }) {
+            ForEach(this.MyPage_Serves2, (item: MyPage_Serves, i) => {
+              Row({ space: 20 }) {
+                Image(item.img)
+                  .width(25)
+                  .fillColor('#ffe1dede')
+                Text(item.str)
+                  .fontSize(20)
+                  .fontColor(Color.White)
+              }
+              .margin({ top: i == 0 ? 5 : 0, bottom: i == this.MyPage_Serves2.length - 1 ? 5 : 0 })
+              .width('100%')
+
+              if (i != this.MyPage_Serves2.length - 1) {
+                Divider()
+                  .width('100%')
+                  .color('#ffc2c2c2')
+                  .strokeWidth(1.5)
+              }
+
+            })
+          }
+          .borderRadius(15)
+          .backgroundColor('#c6585858')
+          .padding(15)
+          .width('100%')
+        }
+
       }
+      .scrollBar(BarState.Off)
       .width('100%')
       .layoutWeight(1)
 
