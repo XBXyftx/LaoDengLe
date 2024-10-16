@@ -32,9 +32,10 @@ struct XiaoCheXiangQing {
 
       Stack(){
         Text('若摄像头未拍摄到目标可手动对准')
-          .position({y:220})
+          // .position({y:220})
           .width('100%')
           .textAlign(TextAlign.Center)
+          .position({bottom:10})
         Row(){
 
         }
