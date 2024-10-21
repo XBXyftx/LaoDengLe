@@ -1,5 +1,6 @@
 import { router } from '@kit.ArkUI'
 import { DengLu } from '../module/DengLu'
+import { text } from '@kit.ArkGraphics2D'
 
 interface SheBeiList {
   name: string
@@ -17,7 +18,8 @@ interface MyPage_Serves {
 struct Index {
   @State currentTabIndex: number = 0
   sheBeiList: SheBeiList[] = [
-    { name: '老登乐小车', state: '已连接', img: $rawfile('laoDengLeCar.svg') }
+    { name: '智能监护小车', state: '已连接', img: $rawfile('laoDengLeCar.svg') },
+    { name: '智能监护无人机', state: '充电中', img: $rawfile('WuRenJi.svg') }
   ]
   @State time: number = 5
   @State Id: number = 0
@@ -116,10 +118,10 @@ struct MyPage_Builder {
     { img: $rawfile('SheBeiXieTong.svg'), str: '多设备协同' },
   ]
   MyPage_Serves3: MyPage_Serves[] = [
-    {img:$rawfile('Setting.svg'),str:'设置'},
-    {img:$rawfile('ZhangHuSafe.svg'),str:'账户安全'},
-    {img:$rawfile('YinSi.svg'),str:'隐私管理'},
-    {img:$rawfile('Help.svg'),str:'帮助与反馈'},
+    { img: $rawfile('Setting.svg'), str: '设置' },
+    { img: $rawfile('ZhangHuSafe.svg'), str: '账户安全' },
+    { img: $rawfile('YinSi.svg'), str: '隐私管理' },
+    { img: $rawfile('Help.svg'), str: '帮助与反馈' },
   ]
 
   build() {
@@ -205,9 +207,9 @@ struct MyPage_Builder {
         }
 
         //设置区
-        ListItem(){
-          Column({ space: 20 }){
-            ForEach(this.MyPage_Serves3,(item:MyPage_Serves,i)=>{
+        ListItem() {
+          Column({ space: 20 }) {
+            ForEach(this.MyPage_Serves3, (item: MyPage_Serves, i) => {
               Row({ space: 20 }) {
                 Image(item.img)
                   .width(25)
@@ -270,7 +272,7 @@ function ShouYe_XiaBu_Builder(list: SheBeiList[]) {
   .padding({ left: 15, bottom: 5 })
   .width('100%')
 
-  List({ space: 10 }) {
+  List() {
     ForEach(list, (item: SheBeiList, i) => {
       ShouYe_SheBei_Builder(item);
     });
@@ -319,6 +321,8 @@ function ShouYe_SheBei_Builder(sheBei: SheBeiList) {
         .fontColor(Color.White)
         .fontSize(20)
         .fontWeight(500)
+        .maxLines(1)
+        .textOverflow({overflow:TextOverflow.Ellipsis})
       Text(sheBei.state)
         .fontColor(Color.White)
         .fontSize(14)
@@ -331,12 +335,13 @@ function ShouYe_SheBei_Builder(sheBei: SheBeiList) {
     .onClick(() => {
       router.pushUrl({ url: "pages/XiaoCheXiangQing" })
     })
+    .margin({right:10})
   }
   .padding(10)
   .borderRadius(10)
   .height(130)
   .backgroundColor('#6fcccccc')
-  .width('100%')
+  .width('90%')
 }
 
 @Styles

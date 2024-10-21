@@ -2,8 +2,8 @@
 @Component
 struct DengLu {
   build() {
-    Column({space:200}) {
-      Text('老登乐')
+    Column({space:30}) {
+      Text('智能养老监护精灵')
         .fontSize(60)
         .width(60)
 
