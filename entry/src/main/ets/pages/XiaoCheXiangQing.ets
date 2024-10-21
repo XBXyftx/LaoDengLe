@@ -157,7 +157,7 @@ function MonitorBuilder() {
           router.back()
           console.log('返回按钮点击事件生效')
         })
-      Text('老登乐小车监控界面')
+      Text('智能监护小车监控界面')
         .fontSize(16)
         .fontColor(Color.White)
     }
