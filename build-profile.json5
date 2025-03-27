@@ -1,6 +1,20 @@
 {
   "app": {
-    "signingConfigs": [],
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "C:\\Users\\ASUS\\.ohos\\config\\default_LaoDengLe_-WSeDrcnc1BlnYSgHjPRHOBzspXC7eznj2ws8ZpDZNk=.cer",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001B543C43827501A3FCAABD4D31BADDD99AC140A401D2CA16591637E7BD9DA06D384BD265C7B6913A",
+          "profile": "C:\\Users\\ASUS\\.ohos\\config\\default_LaoDengLe_-WSeDrcnc1BlnYSgHjPRHOBzspXC7eznj2ws8ZpDZNk=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:\\Users\\ASUS\\.ohos\\config\\default_LaoDengLe_-WSeDrcnc1BlnYSgHjPRHOBzspXC7eznj2ws8ZpDZNk=.p12",
+          "storePassword": "0000001BDAA533CF61640319F202D43F6C76A236382C182EEF6CF1CA8E79478C39F3FF79039F4371DA5DA5"
+        }
+      }
+    ],
     "products": [
       {
         "name": "default",
